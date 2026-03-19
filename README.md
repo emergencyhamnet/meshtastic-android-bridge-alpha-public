@@ -13,6 +13,9 @@ See `docs/10_alpha_tester_quickstart.md`.
 ## Testing
 See `docs/11_alpha_tester_smoke_test_plan.md`.
 
+## Release notes
+See `RELEASE_NOTES_alpha_2026-03-19.md`.
+
 ## Licensing
 1. Code package: PolyForm Noncommercial 1.0.0 (`LICENSE`)
 2. Documentation: CC BY-NC 4.0 (`docs/LICENSE.md`)

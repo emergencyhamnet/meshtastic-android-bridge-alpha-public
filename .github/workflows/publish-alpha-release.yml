@@ -1,0 +1,50 @@
+name: Publish Alpha Release
+
+on:
+  push:
+    tags:
+      - "alpha-*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (for example alpha-2026-03-19)"
+        required: true
+        default: "alpha-2026-03-19"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine tag
+        id: vars
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Ensure artifacts exist
+        shell: bash
+        run: |
+          test -f releases/alpha_2026-03-19/meshtastic-bridge-alpha-2026-03-19.apk
+          test -f releases/alpha_2026-03-19/SHA256SUMS.txt
+          test -f RELEASE_NOTES_alpha_2026-03-19.md
+
+      - name: Create or update release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.tag }}
+          name: ${{ steps.vars.outputs.tag }}
+          body_path: RELEASE_NOTES_alpha_2026-03-19.md
+          files: |
+            releases/alpha_2026-03-19/meshtastic-bridge-alpha-2026-03-19.apk
+            releases/alpha_2026-03-19/SHA256SUMS.txt
+          make_latest: true
