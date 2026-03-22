@@ -33,3 +33,21 @@ This alpha tightens SMS <-> Meshtastic routing behavior, loop prevention, and ch
 
 - Gradle/AGP deprecation warnings are still present and intentionally deferred to avoid compatibility regression.
 - Multi-caller and multi-channel behavior should continue field validation.
+- Preferred-caller governance guardrails are not yet enforced in UI validation:
+	- Intended policy is max 10 shared-group callers.
+	- Dedicated 1:1 channel callers are separate from the shared-group cap.
+- Routing mode is single-active in this build: Shared and Channel-bound profiles can both be configured, but only the last saved mode is active at runtime.
+
+## Operator Warning For This Build
+
+- Private channel selection currently allows values beyond Meshtastic's supported private channel range.
+- Until the next release patch is applied, use Private 1 through Private 7 only.
+- Do not configure Private 8, Private 9, or Private 10.
+- Keep one unique private channel per caller row when possible.
+- Keep shared-group caller count at 10 or fewer.
+- Only one routing mode is active at a time; last saved mode is active.
+
+## Known Issues Tracking
+
+- See `docs/14_known_issues_alpha_0.2.0.md` for active issues and workarounds.
+- Tester feedback requested for hybrid routing maturity: shared-default with dedicated overrides vs dedicated-default with shared fallback.

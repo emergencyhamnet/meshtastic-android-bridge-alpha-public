@@ -14,7 +14,8 @@ See `docs/10_alpha_tester_quickstart.md`.
 See `docs/11_alpha_tester_smoke_test_plan.md`.
 
 ## Release notes
-See `RELEASE_NOTES_alpha_2026-03-19.md`.
+1. See `RELEASE_NOTES_alpha_2026-03-20.md` for current alpha notes.
+2. See `docs/14_known_issues_alpha_0.2.0.md` for active known issues and tester feedback asks.
 
 ## Licensing
 1. Code package: PolyForm Noncommercial 1.0.0 (`LICENSE`)

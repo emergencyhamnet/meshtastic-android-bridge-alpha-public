@@ -52,6 +52,26 @@ adb install -r meshtastic-bridge-alpha-YYYY-MM-DD.apk
    3. optional RCS display name
    4. optional private channel (channel-bound mode)
 
+### Current build warning (0.2.0-alpha.1)
+
+1. Use only Private 1 through Private 7.
+2. Do not select Private 8, Private 9, or Private 10.
+3. Keep one unique private channel per caller row when possible.
+4. Keep shared-group caller count at 10 or fewer.
+5. Dedicated 1:1 channel callers are separate from the shared-group cap.
+6. Only one routing mode is active at runtime; last saved mode is active.
+7. See issue tracker for current status: `docs/14_known_issues_alpha_0.2.0.md`
+
+### Tester feedback request (routing maturity)
+
+Please include one sentence in your test notes for each point:
+
+1. Preferred routing model in the field:
+   1. shared default with dedicated overrides
+   2. dedicated default with shared fallback
+2. Any ambiguity observed when switching modes during live operations.
+3. Any operator confusion about which mode is currently active.
+
 ## 5. Operator reply formats
 
 Supported:
